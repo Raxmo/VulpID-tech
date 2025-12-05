@@ -23,10 +23,36 @@ The engine is structured around core systems that handle rendering, physics, inp
 
 ### Design Philosophy
 
-- Inspired by IDtech engine architecture
-- Focus on performance and extensibility
-- Clean separation of concerns
-- Rust's type system for safety guarantees
+VulpID-tech is built on a **thin layers of abstraction** principle:
+
+- **Composable, not hierarchical**: Systems are thin wrappers that build on each other, not nested pyramids
+- **Breakable at every level**: Users can "jump off" at any layer and rewrite their own system
+- **Multiple entry points**: Use high-level convenience APIs or drop down to lower levels
+- **Rust-first**: Leverage Rust's type system for safety while maintaining performance
+- **Inspired by IDtech**: Learn from proven 90s engine architecture but modernize for today
+
+**Example Layer Stack:**
+
+```
+Game (optional convenience wrapper)
+  ↓
+Window (thin winit wrapper)
+  ↓
+Input (processes events, exposes raw winit::Event)
+  ↓
+Keyboard/Mouse (typed input, but winit::Event still accessible)
+  ↓
+winit (raw library)
+```
+
+Users can use `Game`, skip to `Window`, use `Input` standalone, or access `winit` directly. Each layer is optional and rewritable internally.
+
+**Benefits:**
+- Experimentation at every level
+- No forced abstractions
+- Performance: remove layers you don't need
+- Educational: learn engine architecture layer by layer
+- Flexible: pick and choose which abstractions help you
 
 ## Core Systems
 
@@ -80,16 +106,41 @@ Custom compositing:
 
 ## Module Organization
 
+Modules are organized as thin, composable layers:
+
 ```
 src/
 ├── lib.rs
-├── main.rs
-├── render/      # Rendering pipeline
-├── physics/     # Physics simulation
-├── input/       # Input handling
-├── ecs/         # Entity-Component System
-└── utils/       # Utility functions
+├── main.rs (example application)
+│
+├── window/          # Thin winit wrapper
+│   ├── mod.rs       # Window struct, event loop abstraction
+│   └── event.rs     # Event handling (exposes raw winit::Event)
+│
+├── input/           # Input system built on window events
+│   ├── mod.rs       # Input state management
+│   ├── keyboard.rs  # Keyboard-specific handling
+│   └── mouse.rs     # Mouse-specific handling
+│
+├── render/          # Rendering pipeline
+│   ├── mod.rs       # Renderer abstraction
+│   ├── layer.rs     # Layer system
+│   └── context.rs   # glow context wrapper
+│
+├── audio/           # Audio system
+│   └── mod.rs       # alto wrapper
+│
+├── physics/         # Physics simulation (future)
+│   └── mod.rs
+│
+├── ecs/             # Entity-Component System (future)
+│   └── mod.rs
+│
+└── utils/           # Utility functions
+    └── mod.rs
 ```
+
+**Key Principle:** Each module exposes both high-level convenience APIs and low-level primitives, allowing users to bypass any layer they don't need.
 
 ## Data Flow
 
