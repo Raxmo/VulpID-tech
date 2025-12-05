@@ -71,3 +71,22 @@ See `/notes` for development progress and planning.
 ## Documentation
 
 For architecture, design decisions, and technical details, see `DOCUMENTATION.md`.
+
+## License
+
+Licensed under either of
+
+- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
+- MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+
+at your option.
+
+## Dependencies
+
+VulpID-tech uses the following open-source libraries:
+
+- **winit** (Apache 2.0) - Cross-platform window creation and management
+- **glow** (Apache 2.0) - OpenGL bindings
+- **alto** (MIT/Apache 2.0) - OpenAL audio bindings
+
+See [DEPENDENCIES.md](DEPENDENCIES.md) for full attribution and license details.
