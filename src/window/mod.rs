@@ -5,7 +5,6 @@
 use winit::dpi::LogicalSize;
 use winit::event_loop::EventLoop;
 use winit::window::{Window as WinitWindow, WindowAttributes};
-use std::num::NonZeroU32;
 
 /// A VulpID window wrapping winit
 pub struct Window {
