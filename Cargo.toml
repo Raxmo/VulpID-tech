@@ -11,3 +11,11 @@ path = "src/main.rs"
 path = "src/lib.rs"
 
 [dependencies]
+# Windowing
+winit = "0.30"
+
+# Graphics
+glow = "0.13"
+
+# Audio
+alto = "3.0"
