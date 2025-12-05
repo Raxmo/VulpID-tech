@@ -76,8 +76,8 @@ For architecture, design decisions, and technical details, see `DOCUMENTATION.md
 
 Licensed under either of
 
-- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
-- MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+- Apache License, Version 2.0 ([LICENSES/VulpID-Apache-2.0.txt](LICENSES/VulpID-Apache-2.0.txt) or http://www.apache.org/licenses/LICENSE-2.0)
+- MIT license ([LICENSES/VulpID-MIT.txt](LICENSES/VulpID-MIT.txt) or http://opensource.org/licenses/MIT)
 
 at your option.
 
@@ -89,4 +89,15 @@ VulpID-tech uses the following open-source libraries:
 - **glow** (Apache 2.0) - OpenGL bindings
 - **alto** (MIT/Apache 2.0) - OpenAL audio bindings
 
-See [DEPENDENCIES.md](DEPENDENCIES.md) for full attribution and license details.
+See [DEPENDENCIES.md](DEPENDENCIES.md) for full attribution details.
+
+### License Texts
+
+Complete license texts for all dependencies are included in the [LICENSES/](LICENSES/) directory:
+
+- [LICENSES/VulpID-MIT.txt](LICENSES/VulpID-MIT.txt) - VulpID-tech MIT license
+- [LICENSES/VulpID-Apache-2.0.txt](LICENSES/VulpID-Apache-2.0.txt) - VulpID-tech Apache 2.0 license
+- [LICENSES/winit-Apache-2.0.txt](LICENSES/winit-Apache-2.0.txt) - winit Apache 2.0 license
+- [LICENSES/glow-Apache-2.0.txt](LICENSES/glow-Apache-2.0.txt) - glow Apache 2.0 license
+- [LICENSES/alto-MIT.txt](LICENSES/alto-MIT.txt) - alto MIT license
+- [LICENSES/alto-Apache-2.0.txt](LICENSES/alto-Apache-2.0.txt) - alto Apache 2.0 license
