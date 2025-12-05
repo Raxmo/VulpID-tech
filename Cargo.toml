@@ -1,6 +1,13 @@
 [package]
 name = "vulpid-tech"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
+
+[[bin]]
+name = "vulpid-tech"
+path = "src/main.rs"
+
+[lib]
+path = "src/lib.rs"
 
 [dependencies]

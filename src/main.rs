@@ -1,3 +1,7 @@
+use vulpid_tech::render::Engine;
+
 fn main() {
-    println!("Hello, world!");
+    let engine = Engine::new();
+    println!("Welcome to {}!", engine.name());
+    println!("Engine initialized successfully.");
 }
