@@ -4,6 +4,7 @@
 //! with native support for both 2D and 3D rendering.
 
 pub mod render;
+pub mod test;
 
 #[cfg(test)]
 mod tests {
