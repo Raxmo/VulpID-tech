@@ -34,6 +34,42 @@ The engine is structured around core systems that handle rendering, physics, inp
 
 ### Rendering System
 
+#### Layer-Based Architecture
+
+The rendering system uses a flexible, user-defined layer pipeline where users can compose rendering layers in any order. Each layer can be independently typed as 2D or 3D (or custom), with its own rendering logic and event system.
+
+**Core Concepts:**
+
+- **Layers**: Generic rendering units that can be composed into a pipeline
+- **Layer Types**: 2D, 3D, or custom (user-defined)
+- **Meta-Pipeline**: User-defined ordering and composition of layers
+- **Events**: Layers can pass and consume events for inter-layer communication
+
+**Example Pipelines:**
+
+Standard 3D game with UI overlay:
+```
+3D World Scene → Physical UI → Post-Processing → 2D UI
+```
+
+2D-primary with 3D elements:
+```
+2D Background → 3D Game World → 2D Foreground
+```
+
+Custom compositing:
+```
+3D Pass 1 → Custom Filter → 3D Pass 2 → 2D Overlay
+```
+
+**Benefits:**
+
+- Native support for both 2D and 3D without forcing one into the other
+- Extensible: users define their own rendering pipeline
+- Type-safe: layer types ensure correct rendering logic
+- Event-driven communication between layers
+- Flexible composition for various game genres and visual styles
+
 ### Physics System
 
 ### Input System
@@ -74,3 +110,9 @@ src/
 
 **Last Updated:** December 5, 2025
 **Status:** Project initialization phase
+
+## Design Notes
+
+### Rendering Philosophy
+
+One of VulpID-tech's core strengths is proper handling of both 2D and 3D rendering. Unlike many engines that either force everything into 3D or treat 2D as a second-class citizen, VulpID-tech gives both dimensions first-class support through its layer-based architecture. Users can work with 2D and 3D natively within a single, unified system.
