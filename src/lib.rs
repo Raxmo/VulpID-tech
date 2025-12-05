@@ -3,7 +3,6 @@
 //! A Rust game engine inspired by IDtech engines (Quake, Doom)
 //! with native support for both 2D and 3D rendering.
 
-pub mod render;
 pub mod test;
 
 #[cfg(test)]
