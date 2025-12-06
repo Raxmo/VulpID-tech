@@ -1,7 +1,8 @@
-use vulpid_tech::window;
+use vulpid_tech::Window;
 
 fn main() 
 {
     println!("hello world!");
-    window::testing();
+    let twin = vulpid_tech::Window::new().title("From the other side");
+    println!("{}", twin.to_string());
 }

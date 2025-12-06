@@ -1,4 +1,4 @@
-pub fn PRINT()
+pub fn print()
 {
     println!("Hello darkness!");
 }

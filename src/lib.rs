@@ -6,6 +6,8 @@
 pub mod window;
 pub mod test;
 
+pub use window::Window;
+
 #[cfg(test)]
 mod tests {
     #[test]
