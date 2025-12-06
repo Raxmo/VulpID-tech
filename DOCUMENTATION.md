@@ -96,11 +96,61 @@ Custom compositing:
 - Event-driven communication between layers
 - Flexible composition for various game genres and visual styles
 
+### Game Architecture (Token-Based ECS)
+
+The optional high-level `Game` layer uses a **token-based entity-component-system** inspired by the Nominal Token Pattern. This provides organizational structure for larger games without enforcing it on all users.
+
+**Core Concepts:**
+
+- **Tokens/IDs**: Unique identifiers for entities, windows, scenes, renderers
+- **Deferred Processing**: Components store tokens, not direct references
+- **Central Ownership**: `Game` owns all collections, other components reference by token
+
+**Architecture:**
+
+```rust
+struct Game {
+    windows: HashMap<WindowId, Window>,
+    scenes: HashMap<SceneId, Scene>,
+    entities: HashMap<EntityId, Entity>,
+    renderers: HashMap<RendererId, Renderer>,
+    input: InputState,
+}
+
+struct Scene {
+    window_id: WindowId,        // token, not owned
+    entity_ids: Vec<EntityId>,  // tokens, not owned
+}
+
+struct Renderer {
+    window_id: WindowId,  // token
+}
+```
+
+**Processing Pattern:**
+
+```rust
+for (scene_id, scene) in &game.scenes {
+    for entity_id in &scene.entity_ids {
+        let entity = &game.entities[entity_id];  // lookup by token
+        // process entity
+    }
+}
+```
+
+**Benefits:**
+
+- No circular ownership or borrow checker conflicts
+- Easy to swap, add, or remove components at runtime
+- Decouple systems via token lookups
+- Natural mapping from Token Pattern (user's C++ design)
+- Enables complex game architectures cleanly
+
+**Important:** This is optional. Users can ignore the `Game` layer entirely and use lower-level primitives directly.
+
 ### Physics System
 
 ### Input System
-
-### Entity-Component System
 
 ### Scripting/Logic System
 
