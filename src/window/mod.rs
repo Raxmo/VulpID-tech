@@ -2,9 +2,7 @@
 //!
 //! Thin wrapper around winit for cross-platform window creation and event handling.
 
-use winit::dpi::LogicalSize;
-use winit::event_loop::EventLoop;
-use winit::window::{Window as WinitWindow, WindowAttributes};
+use winit::window::{Window as WinitWindow};
 
 /// A VulpID window wrapping winit
 pub struct Window {
@@ -12,15 +10,11 @@ pub struct Window {
 }
 
 impl Window {
-    /// Create a new window with default settings
-    pub fn new(event_loop: &EventLoop<()>) -> Result<Self, Box<dyn std::error::Error>> {
-        let attributes = WindowAttributes::default()
-            .with_title("VulpID-tech")
-            .with_inner_size(LogicalSize::new(1280.0, 720.0));
-
-        let window = event_loop.create_window(attributes)?;
-
-        Ok(Window { window })
+    /// Create a window from an existing winit::Window
+    /// 
+    /// This is the primary constructor for the new winit 0.30+ API
+    pub fn new_from_raw(window: WinitWindow) -> Self {
+        Window { window }
     }
 
     /// Get a reference to the underlying winit window
